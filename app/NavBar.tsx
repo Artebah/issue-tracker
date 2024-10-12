@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import React from "react";
 import { IoBug } from "react-icons/io5";
+import { usePathname } from "next/navigation";
+import classNames from "classnames";
 
 const links = [
   { name: "Dashboard", href: "/" },
@@ -8,6 +12,8 @@ const links = [
 ];
 
 const NavBar = () => {
+  const currentPath = usePathname();
+
   return (
     <nav className="flex gap-5 h-14 items-center px-5 border-b">
       <Link href="/">
@@ -15,7 +21,13 @@ const NavBar = () => {
       </Link>
       <ul className="flex gap-4">
         {links.map(({ href, name }) => (
-          <li className="hover:text-slate-50 text-slate-400" key={name}>
+          <li
+            className={classNames({
+              "text-slate-50": currentPath === href,
+              "text-slate-400": currentPath !== href,
+              "hover:text-slate-50": true,
+            })}
+            key={name}>
             <Link href={href}>{name}</Link>
           </li>
         ))}
@@ -23,5 +35,5 @@ const NavBar = () => {
     </nav>
   );
 };
-
+("hover:text-slate-50 text-slate-400");
 export default NavBar;
