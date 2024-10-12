@@ -15,7 +15,7 @@ const NavBar = () => {
   const currentPath = usePathname();
 
   return (
-    <nav className="flex gap-5 h-14 items-center px-5 border-b">
+    <nav className="flex gap-5 h-14 items-center px-5 border-b max-w-4xl m-auto">
       <Link href="/">
         <IoBug size={30} />
       </Link>

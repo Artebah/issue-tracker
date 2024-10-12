@@ -1,0 +1,10 @@
+.editor-toolbar button:hover {
+  @apply bg-black;
+}
+.CodeMirror {
+  @apply bg-black text-slate-50;
+}
+
+.CodeMirror-cursor {
+  @apply border-slate-50;
+}
