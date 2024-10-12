@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Callout, Text, TextArea, TextField } from "@radix-ui/themes";
+import { Button, Callout, Spinner, Text, TextArea, TextField } from "@radix-ui/themes";
 import React from "react";
 import axios from "axios";
 import { Controller, useForm } from "react-hook-form";
@@ -17,15 +17,19 @@ const NewIssuePage = () => {
     resolver: zodResolver(createIssueSchema),
   });
   const [errorMessage, setErrorMessage] = React.useState<string | null>(null);
+  const [isLoading, setIsLoading] = React.useState(false);
   const router = useRouter();
 
   const onSubmit = async (data: ICreateIssueSchema) => {
     try {
+      setIsLoading(true);
+
       await axios.post("/api/issues", data);
+
       router.push("/");
     } catch (error) {
-      //const errorMsg = (error as any).response.data.title._errors[0];
-      setErrorMessage("Error occured");
+      setErrorMessage("Unexpected error occured :(");
+      setIsLoading(false);
     }
   };
 
@@ -41,7 +45,13 @@ const NewIssuePage = () => {
       />
       <ErrorMessage>{formState.errors.description?.message}</ErrorMessage>
 
-      <Button type="submit">Submit new issue</Button>
+      <Button type="submit" disabled={isLoading}>
+        {isLoading && <Spinner />}
+        {/*<BookmarkIcon />*/}
+        Submit new issue
+      </Button>
+
+      <ErrorMessage>{errorMessage}</ErrorMessage>
     </form>
   );
 };
