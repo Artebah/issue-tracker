@@ -10,6 +10,7 @@ import "@/app/custom-easymde.css";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createIssueSchema, ICreateIssueSchema } from "@/app/validationSchemas";
+import ErrorMessage from "@/app/components/ErrorMessage";
 
 const NewIssuePage = () => {
   const { register, handleSubmit, control, formState } = useForm<ICreateIssueSchema>({
@@ -31,18 +32,14 @@ const NewIssuePage = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
       <TextField.Root placeholder="Title" {...register("title")} />
-      {formState.errors.title && <Text color="red">{formState.errors.title.message}</Text>}
+      <ErrorMessage>{formState.errors.title?.message}</ErrorMessage>
 
       <Controller
         name="description"
         control={control}
         render={({ field }) => <SimpleMDE placeholder="Description" {...field} />}
       />
-      {formState.errors.description && (
-        <Text className="-mt-10" color="red">
-          {formState.errors.description.message}
-        </Text>
-      )}
+      <ErrorMessage>{formState.errors.description?.message}</ErrorMessage>
 
       <Button type="submit">Submit new issue</Button>
     </form>
