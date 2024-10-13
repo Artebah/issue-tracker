@@ -1,14 +1,18 @@
 .editor-toolbar button:hover {
-  @apply bg-black;
+  @apply dark:bg-black;
 }
 .editor-toolbar button.active {
-  @apply bg-black border-2;
+  @apply dark:bg-black border-2;
 }
-
-.CodeMirror {
-  @apply bg-black text-slate-50;
+.editor-toolbar {
+  @apply dark:bg-black;
 }
 
 .CodeMirror-cursor {
-  @apply border-slate-50;
+  @apply dark:border-slate-50;
+}
+.CodeMirror,
+.CodeMirror .editor-preview-full,
+.editor-preview-side {
+  @apply dark:bg-black dark:text-slate-50;
 }

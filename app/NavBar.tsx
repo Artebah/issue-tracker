@@ -23,9 +23,9 @@ const NavBar = () => {
         {links.map(({ href, name }) => (
           <li
             className={classNames({
-              "text-slate-50": currentPath === href,
+              "dark:text-slate-50": currentPath === href,
               "text-slate-400": currentPath !== href,
-              "hover:text-slate-50": true,
+              "dark:hover:text-slate-50 hover:text-slate-950": true,
             })}
             key={name}>
             <Link href={href}>{name}</Link>
