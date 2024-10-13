@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={inter.variable}>
-        <Theme appearance="dark" accentColor="green" grayColor="sand" radius="none">
+        <Theme accentColor="green" grayColor="sand" radius="none">
           <NavBar />
           <main className="max-w-4xl m-auto mt-4 px-4">{children}</main>
           <ThemePanel defaultOpen={false} />
