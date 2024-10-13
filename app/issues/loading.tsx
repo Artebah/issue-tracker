@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Link, Skeleton, Table } from "@radix-ui/themes";
+import { Skeleton, Table } from "@radix-ui/themes";
 import IssuesToolbar from "./IssuesToolbar";
 
 const LoadingIssuesPage = () => {
