@@ -1,17 +1,16 @@
 "use client";
 
-import { Button, Spinner, TextField } from "@radix-ui/themes";
 import React from "react";
 import axios from "axios";
+import { Button, Spinner, TextField } from "@radix-ui/themes";
 import { Controller, useForm } from "react-hook-form";
-import SimpleMDE from "react-simplemde-editor";
-import "easymde/dist/easymde.min.css";
-import "@/app/styles/custom-easymde.css";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createIssueSchema, ICreateIssueSchema } from "@/app/validationSchemas";
-import ErrorMessage from "@/app/components/ErrorMessage";
-import delay from "delay";
+import { ErrorMessage } from "@/app/components";
+import SimpleMDE from "react-simplemde-editor";
+import "easymde/dist/easymde.min.css";
+import "@/app/styles/custom-easymde.css";
 
 const NewIssuePage = () => {
   const { register, handleSubmit, control, formState } = useForm<ICreateIssueSchema>({
