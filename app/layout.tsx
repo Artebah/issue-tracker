@@ -3,7 +3,7 @@ import "./styles/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import NavBar from "./NavBar";
-import { Theme, ThemePanel } from "@radix-ui/themes";
+import { Container, Theme, ThemePanel } from "@radix-ui/themes";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,7 +22,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.variable}>
         <Theme accentColor="green" grayColor="sand" radius="none">
           <NavBar />
-          <main className="max-w-4xl m-auto mt-4 px-4">{children}</main>
+          <main className="max-w-4xl m-auto mt-4 px-4">
+            <Container>{children}</Container>
+          </main>
           <ThemePanel defaultOpen={false} />
         </Theme>
       </body>

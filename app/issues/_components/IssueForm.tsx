@@ -1,10 +1,8 @@
 "use client";
-
 import React from "react";
 import axios from "axios";
-import dynamic from "next/dynamic";
 import { Button, Spinner, TextField } from "@radix-ui/themes";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createIssueSchema, ICreateIssueSchema } from "@/app/validationSchemas";
@@ -12,8 +10,7 @@ import { ErrorMessage } from "@/app/components";
 import "easymde/dist/easymde.min.css";
 import "@/app/styles/custom-easymde.css";
 import { Issue } from "@prisma/client";
-
-const EditorController = dynamic(() => import("./EditorController"), { ssr: false });
+import EditorController from "./EditorController";
 
 interface Props {
   issue?: Issue;

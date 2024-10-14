@@ -1,5 +1,3 @@
-"use client";
-
 import "easymde/dist/easymde.min.css";
 import { Controller } from "react-hook-form";
 import SimpleEditor from "react-simplemde-editor";
