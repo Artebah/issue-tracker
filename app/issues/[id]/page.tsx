@@ -5,6 +5,7 @@ import React from "react";
 import EditIssueButton from "./EditIssueButton";
 import IssueDetails from "./IssueDetails";
 import DeleteIssueButton from "./DeleteIssueButton";
+import AssigneeSelect from "./AssigneeSelect";
 
 interface Props {
   params: { id: string };
@@ -27,6 +28,7 @@ const IssueDetailPage = async ({ params }: Props) => {
         <IssueDetails issue={issue} />
       </Box>
       <Box className="flex flex-col gap-2 items-start">
+        <AssigneeSelect />
         <EditIssueButton issueId={issue.id} />
         <DeleteIssueButton issueId={issue.id} />
       </Box>

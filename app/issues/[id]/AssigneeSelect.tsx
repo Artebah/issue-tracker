@@ -1,0 +1,18 @@
+import { Select } from "@radix-ui/themes";
+import React from "react";
+
+const AssigneeSelect = () => {
+  return (
+    <Select.Root defaultValue="apple">
+      <Select.Trigger>Assign to</Select.Trigger>
+      <Select.Content>
+        <Select.Group>
+          <Select.Label>Suggestions</Select.Label>
+          <Select.Item value="1">Artem Litvin</Select.Item>
+        </Select.Group>
+      </Select.Content>
+    </Select.Root>
+  );
+};
+
+export default AssigneeSelect;
