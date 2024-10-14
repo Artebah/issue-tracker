@@ -1,5 +1,4 @@
 import { Avatar, DropdownMenu, Skeleton } from "@radix-ui/themes";
-import { Session } from "next-auth";
 import React from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -7,8 +6,13 @@ import Link from "next/link";
 const ProfileInfo = () => {
   const { data, status } = useSession();
 
-  if (status === "loading") return <Skeleton width="3rem" />;
-  if (status === "unauthenticated") return <Link href="/api/auth/signin">Sign in</Link>;
+  if (status === "loading") return <Skeleton width="2.5rem" height="2.5rem" className="rounded-full" />;
+  if (status === "unauthenticated")
+    return (
+      <Link className="nav-link" href="/api/auth/signin">
+        Sign in
+      </Link>
+    );
 
   if (!data) return;
 
@@ -28,7 +32,9 @@ const ProfileInfo = () => {
       <DropdownMenu.Content>
         <DropdownMenu.Label>{data.user!.email}</DropdownMenu.Label>
         <DropdownMenu.Item>
-          <Link href="/api/auth/signout">Sign out</Link>
+          <Link className="w-full" href="/api/auth/signout">
+            Sign out
+          </Link>
         </DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Root>
