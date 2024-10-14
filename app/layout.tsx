@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import NavBar from "./NavBar";
 import { Container, Theme, ThemePanel } from "@radix-ui/themes";
+import AuthProvider from "./components/AuthProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,15 +20,17 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.variable}>
-        <Theme accentColor="green" grayColor="sand" radius="none">
-          <NavBar />
-          <main className="max-w-4xl m-auto mt-4 px-4">
-            <Container>{children}</Container>
-          </main>
-          <ThemePanel defaultOpen={false} />
-        </Theme>
-      </body>
+      <AuthProvider>
+        <body className={inter.variable}>
+          <Theme accentColor="green" grayColor="sand" radius="none">
+            <NavBar />
+            <main className="max-w-4xl m-auto mt-4 px-4">
+              <Container>{children}</Container>
+            </main>
+            <ThemePanel defaultOpen={false} />
+          </Theme>
+        </body>
+      </AuthProvider>
     </html>
   );
 }
