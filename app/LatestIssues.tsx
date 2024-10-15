@@ -14,19 +14,26 @@ const LatestIssues = async () => {
 
   return (
     <Card>
-      <Heading mb="3">Latest issues</Heading>
+      <Heading mb="3" size="4" ml="2">
+        Latest issues
+      </Heading>
       <Table.Root>
         <Table.Body>
           {issues.map((issue) => (
             <Table.Row key={issue.id}>
               <Table.Cell>
-                <div className="flex justify-between">
+                <div className="flex justify-between gap-3">
                   <div className="flex flex-col items-start gap-2">
                     <Link href={`/issues/${issue.id}`}>{issue.title}</Link>
                     <IssueStatusBadge status={issue.status} />
                   </div>
                   {issue.assignedToUser && (
-                    <Avatar radius="full" src={issue.assignedToUser.image!} fallback="?" />
+                    <Avatar
+                      radius="full"
+                      size={{ initial: "3", sm: "4" }}
+                      src={issue.assignedToUser.image!}
+                      fallback="?"
+                    />
                   )}
                 </div>
               </Table.Cell>
