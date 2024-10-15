@@ -47,8 +47,6 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     },
   });
 
-  console.log("updated");
-
   return NextResponse.json(updatedIssue);
 }
 
